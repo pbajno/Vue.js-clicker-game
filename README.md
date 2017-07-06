@@ -1,4 +1,4 @@
 # Vue.js-clicker-game
 
 Demo:
-https://jsfiddle.net/pbajno/rtp1uqjc/
+https://jsfiddle.net/pbajno/o51ru4qL/
