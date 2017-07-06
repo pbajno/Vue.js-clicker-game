@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Punch it vue.js game">
+    <meta name="author" content="github.com/pbajno">
+
+    <title>Punch it!</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://v4-alpha.getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="https://v4-alpha.getbootstrap.com/examples/starter-template/starter-template.css" rel="stylesheet">
+
+    <style>
+        @font-face {
+        font-family: 'NexaRustSans';
+        src:
+            url('assets/fonts/NexaRustSans.otf') format('opentype');
+            font-weight: normal;
+            font-style: normal;
+        }
+        .starter-template h1 {font-family: 'NexaRustSans'}
+        #bag {width: 175px; height: 325px;  margin:0 auto;
+        background: url('assets/images/bag-start.png') center no-repeat;
+        background-size: 80%}
+        #bag {
+            cursor: url('assets/images/cursor.png'), auto;
+        }
+        #bag.end {
+            background: url('assets/images/bag-end.png') center no-repeat;
+            background-size: 80%;
+        }
+        #bag-health {
+            width: 200px;
+            border: 2px solid #000;
+            margin: 0 auto 20px auto;
+        }
+        #bag-health div {
+            height: 20px;
+            background:#c51819;
+        }
+        .small {margin: 20px 0}
+        #controls {
+            width: 120px;
+            margin: 0 auto;
+        }
+        #shout {z-index:1000;position: absolute; top: 150px; left: 50px}
+        .unselectable {
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+    </style>
+ 
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <div class="starter-template">
+        <h1>Punch it</h1>
+        <div id="vue-app">
+            
+            <div id="bag" v-on:click="punch" v-bind:class="{ end: ended }"></div>
+
+            <div id="bag-health">
+                <div v-bind:style="{ width: health + '%'}"></div>
+            </div>
+
+            <div id="controls">
+                <button v-on:click="restart">Restart</button>
+            </div>
+
+            <div id="shout" class="unselectable">
+                <transition
+                    v-on:before-enter="beforeEnter"
+                    v-on:enter="enter"
+                    v-on:leave="leave"
+                    v-bind:css="false"
+                >
+                    <p v-if="shout">{{quote}}</p>
+                </transition>
+            </div>
+
+        </div>
+
+        <p class="small">
+            Build with vue.js.<br>
+            Images are courtesy of freepik.com
+        </p>
+      </div>
+
+    </div><!-- /.container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://unpkg.com/vue"></script>
+    <script src="app.js"></script>
+    <script src="https://unpkg.com/velocity-animate@1.2.3"></script>
+
+    </body>
+</html>
